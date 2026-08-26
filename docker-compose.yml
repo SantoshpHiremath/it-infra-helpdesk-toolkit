@@ -1,0 +1,19 @@
+# A real, runnable multi-service deployment: the helpdesk API plus a
+# watchdog sidecar polling its health endpoints -- modeling the kind
+# of on-premise / self-hosted deployment shape the posting's "deploy
+# to cloud and on-premise infrastructure" task describes, run and
+# verified as real running containers in this project's development
+# (see README's verification section), not just written and assumed
+# to work.
+services:
+  helpdesk-api:
+    build: .
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped

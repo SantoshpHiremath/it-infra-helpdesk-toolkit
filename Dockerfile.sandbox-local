@@ -1,0 +1,30 @@
+# This is the EXACT Dockerfile actually built and run in this
+# project's development sandbox (see README's Verification section)
+# -- kept alongside the standard Dockerfile because that sandbox had
+# no access to Docker Hub (docker.io returned 403) or a working TLS
+# path to pypi.org from inside a container build, so it had to build
+# on a locally pre-cached base image and vendored dependency wheels
+# instead. On a normal machine or CI runner with standard internet
+# access (like GitHub Actions, see .github/workflows/ci.yml), use the
+# regular `Dockerfile` -- it's the portable, standard version. This
+# file exists purely as an honest, literal record of what was
+# actually run to produce the verification results in the README.
+FROM knowron-base:py312 AS base
+
+WORKDIR /app
+
+COPY requirements.txt .
+COPY wheels/ wheels/
+RUN pip install --no-cache-dir --break-system-packages --no-index --find-links=wheels/ flask
+
+COPY src/ src/
+
+RUN useradd --create-home --shell /bin/bash appuser
+USER appuser
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=15s --timeout=3s --start-period=5s --retries=3 \
+    CMD python3 -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')" || exit 1
+
+CMD ["python3", "-m", "flask", "--app", "src.api", "run", "--host=0.0.0.0", "--port=8000"]
