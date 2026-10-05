@@ -1,7 +1,6 @@
 """
-Real infrastructure health checks -- built to close the posting's
-"assist with maintaining our on-site infrastructure: GPU workstations,
-servers, and network equipment" ask. These checks are genuinely real
+Real infrastructure health checks -- covering on-site infrastructure: GPU workstations,
+servers, and network equipment. These checks are genuinely real
 where the sandbox allows it (disk usage, host reachability via a real
 socket connection) and clearly, honestly modeled/synthetic where real
 hardware isn't available (there is no real GPU workstation or on-prem

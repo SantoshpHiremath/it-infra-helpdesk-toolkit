@@ -1,10 +1,8 @@
 """
 A real, tested IT-support ticket model and priority-triage engine --
-built to close a specific gap for eigenblue's "Working Student IT
-Support" posting: "Handle, prioritize, and troubleshoot day-to-day IT
-support requests and issues, from work laptops to office network
-setups, using Slack and Jira Service Desk." I have no access to real
-Jira Service Desk or Slack in this environment, so this project
+covering day-to-day IT support work: handling, prioritizing, and
+troubleshooting requests from work laptops to office network setups.
+There is no access to real Jira Service Desk or Slack here, so this project
 implements the underlying triage logic those tools would sit on top
 of, on a real, runnable data model, rather than a description of the
 concept.

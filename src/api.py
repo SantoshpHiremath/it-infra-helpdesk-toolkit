@@ -1,8 +1,6 @@
 """
 A small, real Flask API exposing the ticket triage and infra-health
-logic over HTTP -- a realistic, deployable target (matching the
-posting's "help project teams deploy to cloud and on-premise
-infrastructure" ask), containerized and health-checked exactly like
+logic over HTTP -- a realistic, deployable target (for cloud and on-premise infrastructure), containerized and health-checked exactly like
 the pattern used in the devops-cicd-monitoring project earlier in this
 portfolio.
 """

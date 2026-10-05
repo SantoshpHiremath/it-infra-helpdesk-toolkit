@@ -2,7 +2,7 @@
 Real, explicit, testable ticket-priority triage logic -- turning "use
 good judgement about what's urgent" into a documented, consistent rule
 set rather than an implicit, undiscussable habit. This is the kind of
-logic a real support queue (Jira Service Desk, Zendesk, or similar)
+logic a real support queue (Jira Service Desk or similar)
 would apply automatically or a support engineer would apply manually
 every day.
 """
